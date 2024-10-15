@@ -1,0 +1,22 @@
+
+
+# learn
+
+## basic
+
+1. version 不提供代表： lerna 多包的版本号不一样
+    
+2. "preinstall": "npx only-allow pnpm", 指定 包管理工具是pnpm
+
+3. lerna.json 里面也是有 workspaces 和 public 但是我们使用package。json
+
+4. 多包 a 引入b 包 是通过软链的形式 (类似npm link )
+
+
+## 疑惑
+
+1. lerna run test 和 lerna clean 为啥不run  估计是内部处理
+   1. lerna 没有 run 这个命令 走的是子包的test的命令
+
+2. lerna create 新创一个包
+

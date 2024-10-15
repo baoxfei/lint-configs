@@ -1,0 +1,31 @@
+{
+  "name": "commitlint-config",
+  "version": "0.0.0",
+  "description": "git commit message lint config",
+  "keywords": [
+    "commit",
+    "lint"
+  ],
+  "author": "bxf <xybaoxiangfei@163.com>",
+  "homepage": "https://github.com/baoxfei/lint-configs#readme",
+  "license": "ISC",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "index.js"
+  ],
+  "publishConfig": {
+    "registry": "https://registry.npmmirror.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/baoxfei/lint-configs.git"
+  },
+  "scripts": {},
+  "bugs": {
+    "url": "https://github.com/baoxfei/lint-configs/issues"
+  }
+}
