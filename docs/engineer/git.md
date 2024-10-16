@@ -94,6 +94,50 @@ subject 用来描述本次改动的内容，需要注意的点：
     docs: Delete redundant docs.
    ```
 
-## git 分支 规范
+### git footer 常用场景
 
-## git tag 规范
+1. 当前场景是破坏性改动 `BREAKING CHANGE`
+2. 引用相关的 issue 或 pull request: `Close fix Resolve`
+
+## 2. git 分支 规范
+
+目前互联网和社区中流传最广泛的一个分支模型 [Git Flow](https://github.com/nvie/gitflow) 出自 [a-successful-git-branching-model](https://nvie.com/posts/a-successful-git-branching-model/) 这篇十年前的文章，文章作者 Vincent Driessen 在 2020 年三月份的时候已经公开表示，该分支模型已经不适用于现如今持续交付的软件工程方式，推荐在持续交付的软件工程中使用更简单的 [Github Flow](https://guides.github.com/introduction/flow/) 模型。
+
+### 2.1 新建分支规范
+
+推荐{type}/{需求号｜功能模块}-name-date
+
+- type: 1.3.1 所述的type
+- 需求号｜功能模块： 确定你要做的内容
+- name： 开发者名称 可选
+- date： 日期
+
+## Git tag 命名规范
+
+`Git tag` 就是通过语义化的名称来给仓库标注一个个具体的节点。与此同时还可以根据标签名称来大致了解当前项目的兼容性和迭代情况。
+
+命名格式为 `v{semver}`，`semver` 是遵循 [semantic version](https://semver.org/lang/zh-CN/) 的版本号，例如 `v1.2.3`。
+
+相比于使用例如 `git tag v1.2.3` 这种「轻量标签」，更推荐使用如下命令生成「附注标签」：
+
+`git tag -a v1.2.3 -m "发布经销商管理模块"`
+
+## 参考资料
+
+1. [AngularJS 代码贡献指南][angular-contributing]
+2. [AngularJS Git Commit Message Conventions][angular-git-conventions]
+3. [Karma 的 Git 日志规范][karma-git-msg]
+4. [StackOverflow - 在 Git 日志中我该用过去时态还是现在时态？][stackoverflow-git-msg]
+5. [一个成功的 Git 分支模型][a-successful-git-branching-model]
+6. [Git 基础打标签][git-basic-tag]
+7. [每行字符数][cpl]
+8. [Conventional Commits][conventionalcommits]
+
+[angular-contributing]: https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md
+[stackoverflow-git-msg]: http://stackoverflow.com/questions/3580013/should-i-use-past-or-present-tense-in-git-commit-messages
+[karma-git-msg]: http://karma-runner.github.io/0.13/dev/git-commit-msg.html
+[angular-git-conventions]: https://docs.google.com/document/d/1QrDFcIiPjSLDn3EL15IJygNPiHORgU1_OOAqWjiDU5Y/edit#heading=h.j8e4paqkfz0q
+[a-successful-git-branching-model]: https://nvie.com/posts/a-successful-git-branching-model/
+[git-basic-tag]: https://git-scm.com/book/zh/v2/Git-%E5%9F%BA%E7%A1%80-%E6%89%93%E6%A0%87%E7%AD%BE
+[cpl]: https://en.wikipedia.org/wiki/Characters_per_line
+[conventionalcommits]: https://www.conventionalcommits.org
