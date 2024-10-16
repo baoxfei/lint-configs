@@ -2,7 +2,6 @@ import { viteBundler } from "@vuepress/bundler-vite";
 import { defaultTheme, SidebarArrayOptions } from "@vuepress/theme-default";
 import { defineUserConfig } from "vuepress";
 import { searchPlugin } from "@vuepress/plugin-search";
-
 export default defineUserConfig({
   bundler: viteBundler({
     viteOptions: {
@@ -26,6 +25,11 @@ export default defineUserConfig({
     },
   },
   theme: defaultTheme({
+    locales: {
+      "/": {
+        selectLanguageName: "简体中文",
+      },
+    },
     logo: "https://vuejs.org/images/logo.png",
     logoAlt: "lint配置",
     navbar: [
@@ -46,7 +50,7 @@ export default defineUserConfig({
       },
       {
         text: "工程规范",
-        prefix: "/engineering/",
+        prefix: "/engineer/",
         children: [
           { text: "Git 规范", link: "git.md" },
           { text: "文档规范", link: "doc.md" },
@@ -99,8 +103,8 @@ export default defineUserConfig({
       },
       {
         text: "工程规范",
-        prefix: "/engineering/",
-        link: "/engineering/",
+        prefix: "/engineer/",
+        link: "/engineer/",
         children: [
           {
             text: "Git 规范",
@@ -126,6 +130,15 @@ export default defineUserConfig({
       },
     ] as SidebarArrayOptions,
     repo: "https://github.com/baoxfei/lint-configs.git",
+    themePlugins: {
+      copyCode: {
+        locales: {
+          "/": {
+            copied: "复制成功",
+          },
+        },
+      },
+    },
   }),
   head: [],
 });
