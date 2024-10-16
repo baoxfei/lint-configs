@@ -14,15 +14,21 @@
     "init": "pnpm install",
     "clean": "lerna  clean && rm -rf node_modules",
     "test": "lerna run test",
-    "dev:docs": "dumi dev",
-    "build:docs": "dumi build",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs",
     "public": "lerna public",
     "lint": "markdownlint README.md",
     "depoly": "",
     "changelog": "conventional-changelog -p angular"
   },
   "devDependencies": {
+    "@vuepress/bundler-vite": "2.0.0-rc.18",
+    "@vuepress/plugin-search": "2.0.0-rc.55",
+    "@vuepress/theme-default": "2.0.0-rc.55",
     "husky": "^9.1.6",
-    "lerna": "^8.1.8"
+    "lerna": "^8.1.8",
+    "sass-embedded": "^1.79.5",
+    "vue": "^3.5.12",
+    "vuepress": "2.0.0-rc.18"
   }
 }

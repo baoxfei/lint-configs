@@ -12,6 +12,12 @@
 
 4. 多包 a 引入b 包 是通过软链的形式 (类似npm link )
 
+## secondary
+
+1. 为什么不建议使用id选择器 是因为id选择器 会去匹配所有的id选择器的声明 所有内容进行遍历 会消耗性能
+2. stylelint
+   1. block 阻塞开发的问题 error
+   2. major 会影响开发内容的问题 warning
 
 ## 疑惑
 
