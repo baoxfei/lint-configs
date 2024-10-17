@@ -1,6 +1,6 @@
 {
-  "name": "commitlint-config",
-  "version": "0.0.0",
+  "name": "commitlint-config-lx",
+  "version": "1.0.0",
   "description": "git commit message lint config",
   "keywords": [
     "commit",
@@ -10,10 +10,6 @@
   "homepage": "https://github.com/baoxfei/lint-configs#readme",
   "license": "ISC",
   "main": "index.js",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
   "files": [
     "index.js"
   ],
@@ -27,5 +23,8 @@
   "scripts": {},
   "bugs": {
     "url": "https://github.com/baoxfei/lint-configs/issues"
+  },
+  "dependencies": {
+    "conventional-changelog-conventionalcommits": "^8.0.0"
   }
 }

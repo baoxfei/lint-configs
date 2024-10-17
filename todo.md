@@ -19,6 +19,11 @@
    1. block 阻塞开发的问题 error
    2. major 会影响开发内容的问题 warning
 
+
+## therd
+
+1. 开源包 使用脚本  prepublicOnly: "npm run test"
+
 ## 疑惑
 
 1. lerna run test 和 lerna clean 为啥不run  估计是内部处理
