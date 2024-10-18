@@ -122,6 +122,12 @@ subject 用来描述本次改动的内容，需要注意的点：
 
 `git tag -a v1.2.3 -m "发布经销商管理模块"`
 
+## 推荐工具
+
+1. cz-git 使用交互式操作生成规范化的commitMsg 具体安装：[详细教程](https://cz-git.qbb.sh/zh/guide/)
+
+
+
 ## 参考资料
 
 1. [AngularJS 代码贡献指南][angular-contributing]

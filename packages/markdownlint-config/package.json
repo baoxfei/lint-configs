@@ -1,6 +1,6 @@
 {
-  "name": "markdownlint-config",
-  "version": "0.0.0",
+  "name": "markdownlint-config-lx",
+  "version": "1.0.0",
   "description": "markdown lint",
   "keywords": [
     "markdown",
@@ -10,13 +10,6 @@
   "homepage": "https://github.com/baoxfei/lint-configs#readme",
   "license": "ISC",
   "main": "index.json",
-  "directories": {
-    "lib": "lib",
-    "test": "__tests__"
-  },
-  "files": [
-    "lib"
-  ],
   "publishConfig": {
     "registry": "https://registry.npmmirror.com/"
   },
@@ -24,10 +17,11 @@
     "type": "git",
     "url": "git+https://github.com/baoxfei/lint-configs.git"
   },
-  "scripts": {
-    "test": "node ./__tests__/markdownlint-config.test.js"
-  },
+  "scripts": {},
   "bugs": {
     "url": "https://github.com/baoxfei/lint-configs/issues"
+  },
+  "peerDependencies": {
+    "markdownlint": "^0.35.0"
   }
 }
