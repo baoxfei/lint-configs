@@ -1,15 +1,16 @@
 {
-  "name": "@baoxf/markdownlint-config",
+  "name": "@baoxf/stylelint-config",
   "version": "1.0.0",
-  "description": "markdown lint",
+  "description": "css lint 规则",
   "keywords": [
-    "markdown",
+    "css",
+    "scss",
     "lint"
   ],
   "author": "bxf <xybaoxiangfei@163.com>",
   "homepage": "https://github.com/baoxfei/lint-configs#readme",
   "license": "ISC",
-  "main": "index.json",
+  "main": "index.js",
   "publishConfig": {
     "registry": "https://registry.npmmirror.com/"
   },
@@ -17,11 +18,17 @@
     "type": "git",
     "url": "git+https://github.com/baoxfei/lint-configs.git"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "jest"
+  },
+  "peerDependencies": {
+    "stylelint": "^16.10.0",
+    "stylelint-scss": "^6.8.1"
+  },
   "bugs": {
     "url": "https://github.com/baoxfei/lint-configs/issues"
   },
-  "peerDependencies": {
-    "markdownlint": "^0.35.0"
+  "dependencies": {
+    "jest": "^29.7.0"
   }
 }

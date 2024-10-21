@@ -5,7 +5,7 @@
 ## 使用
 
 ```bash
-npm install --save-dev markdownlint markdownlint-config
+npm install --save-dev markdownlint @baoxf/markdownlint-config
 ```
 
 安装完成之后 在 `.markdownlint.json` 配置如下

@@ -20,7 +20,7 @@
    2. major 会影响开发内容的问题 warning
 
 
-## therd
+## third
 
 1. 开源包 使用脚本  prepublicOnly: "npm run test"
 
@@ -31,3 +31,8 @@
 
 2. lerna create 新创一个包
 
+## 面试
+
+1. 个人编码能力 `Linter`、`CLI`、`Typescript`、Node 实战
+2. 面试的前端深度体现 工程化方面
+3. 对于前端整体的理解 业务研发 =》 前端架构 通过工具约束前端开发的张力 保证了项目标准的规范化

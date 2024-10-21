@@ -1,5 +1,5 @@
 {
-  "name": "commitlint-config-lx",
+  "name": "@baoxf/commitlint-config",
   "version": "1.0.0",
   "description": "git commit message lint config",
   "keywords": [
