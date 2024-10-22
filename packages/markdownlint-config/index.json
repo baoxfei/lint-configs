@@ -127,5 +127,6 @@
   "strong-style": {
     "style": "asterisk"
   },
-  "line-length": false
+  "line-length": false,
+  "single-title": false
 }
