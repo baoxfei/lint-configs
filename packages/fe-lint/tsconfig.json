@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "outDir": "./lib",
+    "target": "ES5",
+    "module": "commonjs",
+    "esModuleInterop": true,
+    "removeComments": true,
+    "resolveJsonModule": true,
+    "declaration": true,
+    "downlevelIteration": true
+  },
+  "include": ["src"]
+}
