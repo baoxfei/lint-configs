@@ -11,4 +11,13 @@ export default function (options: ScanOptions, pkg: PKG, config: Config) {
     extensions: ESLINT_FILE_EXT,
     errorOnUnmatchedPattern: false,
   };
+
+  if (config.eslintOptions) {
+    Object.assign(eslintConfig, config.eslintOptions);
+  } else {
+    // 判断是否有 eslint 文件
+    // 判断pkg 是否有eslint
+    // 判断是否有ignore
+    // const
+  }
 }
