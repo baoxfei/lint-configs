@@ -12,7 +12,6 @@ import update from './actions/update';
 import npmType from './utils/npm-type';
 import ora from 'ora';
 import scan from './actions/scan';
-import log from './utils/log';
 import printReport from './utils/print-report';
 
 const cwd = process.cwd();
@@ -24,7 +23,7 @@ async function installDepsIfThereNo() {
     .concat(glob.sync('.markdownlint(.@(yaml|yml|json))', { cwd }));
   if (paths.length > 0 && !fs.existsSync(path.resolve(cwd, 'node_modules'))) {
     const npm = await npmType;
-    spawn.execSync(npm, ['i']);
+    spawn.sync(npm, ['i']);
   }
 }
 
@@ -82,9 +81,8 @@ program
       type = 'warn';
     }
 
-    log[type]();
+    checking[type]();
     if (results.length > 0) printReport(results, false);
-    checking.stop();
 
     // 输出 lint 运行错误
     runErrors.forEach((e) => console.log(e));

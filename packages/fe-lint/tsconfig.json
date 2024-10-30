@@ -1,13 +1,14 @@
 {
   "compilerOptions": {
     "outDir": "./lib",
-    "target": "ES5",
+    "target": "ES6",
     "module": "commonjs",
-    "esModuleInterop": true,
+    "esModuleInterop": true, // 允许 import 倒入commonjs模块 并且自动处理默认导出
     "removeComments": true,
-    "resolveJsonModule": true,
-    "declaration": true,
-    "downlevelIteration": true
+    "resolveJsonModule": true, // 允许导入 json 文件作为模块
+    "declaration": true, // 生成声明文件
+    "downlevelIteration": true, // for of ... 处理成低版本 允许使用迭代特性
+    "types": ["node"]
   },
   "include": ["src"]
 }
