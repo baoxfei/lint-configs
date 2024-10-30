@@ -1,8 +1,8 @@
 #!/usr/bin/env node
+import { execSync } from 'child_process';
 import { program } from 'commander';
 import path from 'path';
 import fs from 'fs-extra';
-import spawn from 'cross-spawn';
 import glob from 'fast-glob';
 
 import generateTemplate from './utils/generate-template';
@@ -23,7 +23,7 @@ async function installDepsIfThereNo() {
     .concat(glob.sync('.markdownlint(.@(yaml|yml|json))', { cwd }));
   if (paths.length > 0 && !fs.existsSync(path.resolve(cwd, 'node_modules'))) {
     const npm = await npmType;
-    spawn.sync(npm, ['i']);
+    execSync(`cd ${cwd} && ${npm} i`);
   }
 }
 
