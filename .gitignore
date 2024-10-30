@@ -7,3 +7,24 @@ node_modules/
 /docs/.vuepress/.cache
 # VuePress 默认构建生成的静态文件目录
 /docs/.vuepress/dist
+
+
+*~
+*.swp
+*.log
+
+.DS_Store
+.idea/
+.temp/
+
+dist/
+build/
+lib/
+es/
+coverage/
+release/
+
+node_modules/
+
+.cache/
+out/
