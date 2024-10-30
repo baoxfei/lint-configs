@@ -4,13 +4,13 @@ import { program } from 'commander';
 import path from 'path';
 import fs from 'fs-extra';
 import glob from 'fast-glob';
+import ora from 'ora';
 
 import generateTemplate from './utils/generate-template';
 import init from './actions/init';
 import { PKG_VERSION, PKG_NAME } from './utils/pkg';
 import update from './actions/update';
 import npmType from './utils/npm-type';
-import ora from 'ora';
 import scan from './actions/scan';
 import printReport from './utils/print-report';
 

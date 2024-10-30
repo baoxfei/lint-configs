@@ -2,7 +2,7 @@
   "compilerOptions": {
     "outDir": "./lib",
     "target": "ES6",
-    "module": "commonjs",
+    "module": "CommonJS",
     "esModuleInterop": true, // 允许 import 倒入commonjs模块 并且自动处理默认导出
     "removeComments": true,
     "resolveJsonModule": true, // 允许导入 json 文件作为模块
