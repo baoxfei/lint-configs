@@ -27,11 +27,11 @@ jobs:
         run: |
           npm i pnpm@8 -g
           pnpm install
-          pnpm run build
+          pnpm run docs:build
 
       - name: Deploy
         uses: JamesIves/github-pages-deploy-action@4.1.3
         with:
           BRANCH: gh-pages
-          FOLD: dist
+          FOLD: docs/.vuepress/dist
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
