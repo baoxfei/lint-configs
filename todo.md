@@ -28,6 +28,8 @@
 
 2. lerna create 新创一个包
 
+3. require.resolve 是什么
+
 ## 面试
 
 1. 个人编码能力 `Linter`、`CLI`、`Typescript`、Node 实战

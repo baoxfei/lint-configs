@@ -1,6 +1,7 @@
 {
-  "name": "@baoxf/commitlint-config",
-  "version": "1.0.0",
+  "name": "@bxf1234/commitlint-config",
+  "version": "1.0.1",
+  "privite": false,
   "description": "git commit message lint config",
   "keywords": [
     "commit",

@@ -1,4 +1,3 @@
-import { execSync } from 'child_process';
 // init config 模版 的大体流程
 // 1. 检测当前版本 是否更新
 // 2. 检测当前使用的包管理工具
@@ -115,7 +114,7 @@ export default async function (options?: InitOptions) {
     if (!disableNpmInstall) {
       log.info(`Step ${++step}, 安装依赖`);
       const npm = await npmType;
-      spawn.execSync(npm, ['-i', '-D', PKG_NAME], { stdio: 'inherit', cwd });
+      spawn.sync(npm, ['-i', '-D', PKG_NAME], { stdio: 'inherit', cwd });
       log.info(`Step ${++step}, 依赖安装完成`);
     }
   }

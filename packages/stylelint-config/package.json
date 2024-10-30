@@ -1,6 +1,6 @@
 {
-  "name": "@baoxf/stylelint-config",
-  "version": "1.0.0",
+  "name": "@bxf1234/stylelint-config",
+  "version": "1.0.1",
   "description": "css lint 规则",
   "keywords": [
     "css",
@@ -11,13 +11,14 @@
   "homepage": "https://github.com/baoxfei/lint-configs#readme",
   "license": "ISC",
   "main": "index.js",
-  "publishConfig": {
-    "registry": "https://registry.npmmirror.com/"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/baoxfei/lint-configs.git"
   },
+  "files": [
+    "index.js",
+    "README.md"
+  ],
   "scripts": {
     "test": "jest"
   },

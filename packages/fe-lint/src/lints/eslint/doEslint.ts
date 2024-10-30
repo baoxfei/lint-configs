@@ -14,7 +14,7 @@ interface DoESLintOptions extends ScanOptions {
 // 2. 初始化 eslint
 // 3. 通过eslint 获取 result
 
-export default async function (options: DoESLintOptions): Promise<ScanResult> {
+export default async function (options: DoESLintOptions): Promise<ScanResult[]> {
   let files = [];
   if (Array.isArray(options.files)) {
     files = options.files.filter((filename) => ESLINT_FILE_EXT.includes(extname(filename)));
@@ -31,11 +31,11 @@ export default async function (options: DoESLintOptions): Promise<ScanResult> {
 
   const eslint = new ESLint(getESLintConfig(options, options.pkg, options.config));
 
-  const reports = eslint.lintFiles(files);
+  const reports = await eslint.lintFiles(files);
 
   if (options.fix) {
-    await eslint.outputFixes(reports);
+    await ESLint.outputFixes(reports);
   }
 
-  return formatEsLintResult(reports);
+  return formatEsLintResult(reports, options.quiet, eslint);
 }

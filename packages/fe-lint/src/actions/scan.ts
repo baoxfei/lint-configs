@@ -1,11 +1,11 @@
 import { async } from 'fast-glob';
-import { PKG, ScanOptions, ScanResult } from '../types';
+import { PKG, ScanOptions, ScanResult, ScanReport } from '../types';
 import path from 'path';
 import fs from 'fs-extra';
 import { PKG_NAME } from '../utils/pkg';
 import { doStylelint, doEslint, doMarkdownlint, doPrettier } from '../lints';
 
-export default async (options: ScanOptions): Promise<ScanResult> => {
+export default async (options: ScanOptions): Promise<ScanReport> => {
   const { cwd, fix, config: scanConfig } = options;
   const readConfigFile = (pth: string): any => {
     const localPath = path.resolve(cwd, pth);
@@ -51,5 +51,16 @@ export default async (options: ScanOptions): Promise<ScanResult> => {
       runErrors.push(e);
     }
   }
-  return null;
+
+  if (options.outputReport) {
+    const reportPath = path.resolve(process.cwd(), `./${PKG_NAME}-report.json`);
+    fs.outputFile(reportPath, JSON.stringify(results, null, 2));
+  }
+
+  return {
+    results,
+    errorCount: results.reduce((count, { errorCount }) => count + errorCount, 0),
+    warningCount: results.reduce((count, { warningCount }) => count + warningCount, 0),
+    runErrors,
+  };
 };

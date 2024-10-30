@@ -10,6 +10,10 @@ import init from './actions/init';
 import { PKG_VERSION, PKG_NAME } from './utils/pkg';
 import update from './actions/update';
 import npmType from './utils/npm-type';
+import ora from 'ora';
+import scan from './actions/scan';
+import log from './utils/log';
+import printReport from './utils/print-report';
 
 const cwd = process.cwd();
 
@@ -61,6 +65,29 @@ program
   .option('--no-ignore', '忽略eslint 的 ignore配置文件和配置规则')
   .action(async (cmd) => {
     await installDepsIfThereNo();
+    const checking = ora();
+    checking.start(`开始执行 ${PKG_NAME} 代码检查`);
+    const { results, errorCount, warningCount, runErrors } = await scan({
+      cwd,
+      fix: false,
+      ignore: cmd.ignore,
+      quiet: !!cmd.quiet,
+      include: cmd.include || cwd,
+      outputReport: !!cmd.outputReport,
+    });
+    let type = 'success';
+    if (runErrors.length > 0 || errorCount > 0) {
+      type = 'fail';
+    } else if (warningCount > 0) {
+      type = 'warn';
+    }
+
+    log[type]();
+    if (results.length > 0) printReport(results, false);
+    checking.stop();
+
+    // 输出 lint 运行错误
+    runErrors.forEach((e) => console.log(e));
   });
 
 program
@@ -70,6 +97,17 @@ program
   .option('--no-ignore', '忽略eslint 的 ignore配置文件和配置规则')
   .action(async (cmd) => {
     await installDepsIfThereNo();
+
+    const checking = ora();
+    checking.start(`开始执行 ${PKG_NAME} 代码修复`);
+    const { results } = await scan({
+      cwd,
+      fix: true,
+      ignore: !!cmd.ignore,
+      include: cmd.include || cwd,
+    });
+    checking.succeed();
+    if (results.length > 0) printReport(results, true);
   });
 
 program

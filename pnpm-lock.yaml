@@ -113,6 +113,15 @@ importers:
 
   packages/fe-lint:
     dependencies:
+      '@bxf1234/commitlint-config':
+        specifier: workspace:^
+        version: link:../commitlint-config
+      '@bxf1234/markdownlint-config':
+        specifier: workspace:^
+        version: link:../markdownlint-config
+      '@bxf1234/stylelint-config':
+        specifier: workspace:^
+        version: link:../stylelint-config
       '@inquirer/prompts':
         specifier: ^7.0.0
         version: 7.0.0(@types/node@22.7.7)
@@ -143,19 +152,58 @@ importers:
       glob:
         specifier: ^11.0.0
         version: 11.0.0
+      is-docker:
+        specifier: ^3.0.0
+        version: 3.0.0
       lodash:
         specifier: ^4.17.21
         version: 4.17.21
+      markdownlint:
+        specifier: ^0.35.0
+        version: 0.35.0
       ora:
         specifier: ^8.1.0
         version: 8.1.0
       prettier:
         specifier: ^3.3.3
         version: 3.3.3
+      strip-ansi:
+        specifier: ^7.1.0
+        version: 7.1.0
+      stylelint:
+        specifier: ^16.10.0
+        version: 16.10.0(typescript@4.9.5)
+      stylelint-scss:
+        specifier: ^6.8.1
+        version: 6.8.1(stylelint@16.10.0)
+      terminal-link:
+        specifier: ^3.0.0
+        version: 3.0.0
+      text-table:
+        specifier: ^0.2.0
+        version: 0.2.0
     devDependencies:
+      '@types/command-exists':
+        specifier: ^1.2.3
+        version: 1.2.3
+      '@types/cross-spawn':
+        specifier: ^6.0.6
+        version: 6.0.6
+      '@types/ejs':
+        specifier: ^3.1.5
+        version: 3.1.5
+      '@types/eslint':
+        specifier: ^8.56.12
+        version: 8.56.12
+      '@types/fs-extra':
+        specifier: ^11.0.4
+        version: 11.0.4
       '@types/node':
         specifier: ^22.7.7
         version: 22.7.7
+      '@types/stylelint':
+        specifier: ^14.0.0
+        version: 14.0.0(typescript@4.9.5)
       typescript:
         specifier: ^4.1.2
         version: 4.9.5
@@ -2452,8 +2500,18 @@ packages:
       '@babel/types': 7.25.8
     dev: true
 
+  /@types/command-exists@1.2.3:
+    resolution: {integrity: sha512-PpbaE2XWLaWYboXD6k70TcXO/OdOyyRFq5TVpmlUELNxdkkmXU9fkImNosmXU1DtsNrqdUgWd/nJQYXgwmtdXQ==}
+    dev: true
+
   /@types/conventional-commits-parser@5.0.0:
     resolution: {integrity: sha512-loB369iXNmAZglwWATL+WRe+CRMmmBPtpolYzIebFaX4YA3x+BEfLqhUAV9WanycKI3TG1IMr5bMJDajDKLlUQ==}
+    dependencies:
+      '@types/node': 22.7.7
+    dev: true
+
+  /@types/cross-spawn@6.0.6:
+    resolution: {integrity: sha512-fXRhhUkG4H3TQk5dBhQ7m/JDdSNHKwR2BBia62lhwEIq9xGiQKLxd6LymNhn47SjXhsUEPmxi+PKw2OkW4LLjA==}
     dependencies:
       '@types/node': 22.7.7
     dev: true
@@ -2462,6 +2520,17 @@ packages:
     resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
     dependencies:
       '@types/ms': 0.7.34
+    dev: true
+
+  /@types/ejs@3.1.5:
+    resolution: {integrity: sha512-nv+GSx77ZtXiJzwKdsASqi+YQ5Z7vwHsTP0JY2SiQgjGckkBRKZnk8nIM+7oUZ1VCtuTz0+By4qVR7fqzp/Dfg==}
+    dev: true
+
+  /@types/eslint@8.56.12:
+    resolution: {integrity: sha512-03ruubjWyOHlmljCVoxSuNDdmfZDzsrrz0P2LeJsOXr+ZwFQ+0yQIwNCwt/GYhV7Z31fgtXJTAEs+FYlEL851g==}
+    dependencies:
+      '@types/estree': 1.0.6
+      '@types/json-schema': 7.0.15
     dev: true
 
   /@types/estree@1.0.6:
@@ -2573,6 +2642,16 @@ packages:
 
   /@types/stack-utils@2.0.3:
     resolution: {integrity: sha512-9aEbYZ3TbYMznPdcdr3SmIrLXwC/AKZXQeCf9Pgao5CKb8CyHuEX5jzWPTkvregvhRJHcpRO6BFoGW9ycaOkYw==}
+    dev: true
+
+  /@types/stylelint@14.0.0(typescript@4.9.5):
+    resolution: {integrity: sha512-0eFbWemetFjcDiBBKne7QJBfdicxdmdJ1qGMye3sDYe7mCh8EfuovjkUTg6zXvYhJcWBhIIQnC6bmFYjpYetgQ==}
+    deprecated: This is a stub types definition. stylelint provides its own type definitions, so you do not need this installed.
+    dependencies:
+      stylelint: 16.10.0(typescript@4.9.5)
+    transitivePeerDependencies:
+      - supports-color
+      - typescript
     dev: true
 
   /@types/web-bluetooth@0.0.20:
@@ -3482,6 +3561,13 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       type-fest: 0.21.3
+
+  /ansi-escapes@5.0.0:
+    resolution: {integrity: sha512-5GFMVX8HqE/TB+FuBJGuO5XG0WrsA6ptUqoODaT/n9mmUaZFkqnBueB4leqGBCmrUHnCnC4PCZTCd0E7QQ83bA==}
+    engines: {node: '>=12'}
+    dependencies:
+      type-fest: 1.4.0
+    dev: false
 
   /ansi-regex@3.0.1:
     resolution: {integrity: sha512-+O9Jct8wf++lXxxFc4hc8LsjaSq0HFzzL7cVsw8pRDIPdjKD2mT4ytDZlLuSBZ4cLKZFXIrMGO7DbQCtMJJMKw==}
@@ -6477,6 +6563,12 @@ packages:
     engines: {node: '>=8'}
     hasBin: true
     dev: true
+
+  /is-docker@3.0.0:
+    resolution: {integrity: sha512-eljcgEDlEns/7AXFosB5K/2nCM4P7FQPkGc/DWLy5rmFEWvZayGrik1d9/QIY5nJ4f9YsVvBkA6kJpHn9rISdQ==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    hasBin: true
+    dev: false
 
   /is-extendable@0.1.1:
     resolution: {integrity: sha512-5BMULNob1vgFX6EjQw5izWDxrecWK9AM72rugNr0TFldMOi0fj6Jk+zeKIt0xGj4cEfQIJth4w3OKWOJ4f+AFw==}
@@ -10067,6 +10159,14 @@ packages:
       has-flag: 4.0.0
     dev: true
 
+  /supports-hyperlinks@2.3.0:
+    resolution: {integrity: sha512-RpsAZlpWcDwOPQA22aCH4J0t7L8JmAvsCxfOSEwm7cQs3LshN36QaTkwd70DnBOXDWGssw2eUoc8CaRWT0XunA==}
+    engines: {node: '>=8'}
+    dependencies:
+      has-flag: 4.0.0
+      supports-color: 7.2.0
+    dev: false
+
   /supports-hyperlinks@3.1.0:
     resolution: {integrity: sha512-2rn0BZ+/f7puLOHZm1HOJfwBggfaHXUpPUSSG/SWM4TWp5KCfmNYwnC3hruy2rZlMnmWZ+QAGpZfchu3f3695A==}
     engines: {node: '>=14.18'}
@@ -10119,6 +10219,14 @@ packages:
     resolution: {integrity: sha512-xZFXEGbG7SNC3itwBzI3RYjq/cEhBkx2hJuKGIUOcEULmkQExXiHat2z/qkISYsuR+IKumhEfKKbV5qXmhICFQ==}
     engines: {node: '>=4'}
     dev: true
+
+  /terminal-link@3.0.0:
+    resolution: {integrity: sha512-flFL3m4wuixmf6IfhFJd1YPiLiMuxEc8uHRM1buzIeZPm22Au2pDqBJQgdo7n1WfPU1ONFGv7YDwpFBmHGF6lg==}
+    engines: {node: '>=12'}
+    dependencies:
+      ansi-escapes: 5.0.0
+      supports-hyperlinks: 2.3.0
+    dev: false
 
   /test-exclude@6.0.0:
     resolution: {integrity: sha512-cAGWPIyOHU6zlmg88jwm7VRyXnMN7iV68OGAbYDk/Mh/xC/pzVPlQtY6ngoIH/5/tciuhGfvESU8GrHrcxD56w==}
@@ -10282,6 +10390,11 @@ packages:
     resolution: {integrity: sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==}
     engines: {node: '>=8'}
     dev: true
+
+  /type-fest@1.4.0:
+    resolution: {integrity: sha512-yGSza74xk0UG8k+pLh5oeoYirvIiWo5t0/o3zHHAO2tRDiZcxWP7fywNlXhqb6/r6sWvwi+RsyQMWhVLe4BVuA==}
+    engines: {node: '>=10'}
+    dev: false
 
   /typed-array-buffer@1.0.2:
     resolution: {integrity: sha512-gEymJYKZtKXzzBzM4jqa9w6Q1Jjm7x2d+sh19AdsD4wqnMPDYyvwpsIc2Q/835kHuo3BEQ7CjelGhfTsoBb2MQ==}
