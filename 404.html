@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="zh-cn">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="generator" content="VuePress 2.0.0-rc.18" />
+    <style>
+      :root {
+        --vp-c-bg: #fff;
+      }
+
+      [data-theme='dark'] {
+        --vp-c-bg: #1b1b1f;
+      }
+
+      html,
+      body {
+        background-color: var(--vp-c-bg);
+      }
+    </style>
+    <script>
+      const userMode = localStorage.getItem('vuepress-color-scheme')
+      const systemDarkMode =
+        'matchMedia' in window
+          ? window.matchMedia('(prefers-color-scheme: dark)').matches
+          : false
+
+      if (userMode === 'light') {
+        document.documentElement.dataset.theme = 'light'
+      } else if (userMode === 'dark' || systemDarkMode) {
+        document.documentElement.dataset.theme = 'dark'
+      }
+    </script>
+    <title>前端lint规范化</title><meta name="description" content="前端编码规范工程化">
+    <link rel="preload" href="/assets/style-CojVhhLq.css" as="style"><link rel="stylesheet" href="/assets/style-CojVhhLq.css">
+    <link rel="modulepreload" href="/assets/app-CS7hzIuN.js"><link rel="modulepreload" href="/assets/404.html-CGhdvaG7.js">
+    <link rel="prefetch" href="/assets/index.html-JNrIgRrG.js" as="script"><link rel="prefetch" href="/assets/css.html-DY6_5GFv.js" as="script"><link rel="prefetch" href="/assets/html.html-AJxvSFqt.js" as="script"><link rel="prefetch" href="/assets/javascript.html-dROzSFpb.js" as="script"><link rel="prefetch" href="/assets/node.html--sBFo-d8.js" as="script"><link rel="prefetch" href="/assets/typescript.html-DhAPgpk9.js" as="script"><link rel="prefetch" href="/assets/git.html-DGtbbO79.js" as="script"><link rel="prefetch" href="/assets/markdown.html-FCVVZUz5.js" as="script"><link rel="prefetch" href="/assets/commitlint-config.html-CyUH86c4.js" as="script"><link rel="prefetch" href="/assets/eslint-config.html-ie5Rj0pd.js" as="script"><link rel="prefetch" href="/assets/markdownlint-config.html-B_bcbDXI.js" as="script"><link rel="prefetch" href="/assets/stylelint-config.html-RUW0DZVM.js" as="script"><link rel="prefetch" href="/assets/setupDevtools-7MC2TMWH-DyU1qt8G.js" as="script">
+  </head>
+  <body>
+    <div id="app"><!--[--><div class="vp-theme-container" vp-container data-v-8c473b09><main class="page" data-v-8c473b09><div class="theme-default-content" vp-content data-v-8c473b09><h1 data-v-8c473b09>404</h1><blockquote data-v-8c473b09>How did we get here?</blockquote><a class="route-link" href="/" data-v-8c473b09>Take me home</a></div></main></div><!--[--><!----><!--]--><!--]--></div>
+    <script type="module" src="/assets/app-CS7hzIuN.js" defer></script>
+  </body>
+</html>
