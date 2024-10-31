@@ -1,5 +1,5 @@
 {
-  "name": "test-cli2",
+  "name": "test-cli",
   "version": "0.0.0",
   "description": "> TODO: description",
   "author": "bxf <xybaoxiangfei@163.com>",
@@ -33,5 +33,8 @@
       "pre-commit": "@baoxf/fe-lint commit-file-scan",
       "commit-msg": "@baoxf/fe-lint commit-msg-scan"
     }
+  },
+  "dependencies": {
+    "eslint": "^8.7.0"
   }
 }

@@ -246,7 +246,13 @@ importers:
         specifier: ^29.7.0
         version: 29.7.0(@types/node@22.8.4)
 
-  packages/test-cli: {}
+  packages/test-cli:
+    dependencies:
+      eslint:
+        specifier: ^8.7.0
+        version: 8.57.1
+
+  packages/test-cli2: {}
 
 packages:
 

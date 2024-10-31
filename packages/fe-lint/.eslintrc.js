@@ -1,11 +1,11 @@
 module.exports = {
-  extends: ['@bxf1234'],
-  overrides: {
+  extends: ['@bxf1234/typescript/node'],
+  overrides: [
     {
-      files: ["test/**/*"],
+      files: ['test/**/*'],
       env: {
-        jest: true
-      }
-    }
-  }
+        jest: true,
+      },
+    },
+  ],
 };

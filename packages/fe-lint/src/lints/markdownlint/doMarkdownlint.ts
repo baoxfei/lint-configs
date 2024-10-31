@@ -3,7 +3,7 @@ import { extname, join } from 'path';
 import { ScanResult, ScanOptions, PKG, Config } from '../../types';
 import { MARKDOWN_LINT_FILE_EXT, MARKDOWN_LINT_IGNORE_PATTERN } from '../../utils/constants';
 import getMarkdownLintConfig from './getMarkdownLintConfig';
-import markdownlint, { LintError, LintResults } from 'markdownlint';
+import markdownlint, { LintError } from 'markdownlint';
 import { applyFixes } from 'markdownlint/helpers';
 import formatMarkdonwLintResult from './formatMarkdonwLintResult';
 import fs from 'fs-extra';
