@@ -34,7 +34,7 @@ program
   );
 
 program
-  .command('--linter-init')
+  .command('init-linter')
   .description('一键接入：为项目初始化工具和配置，可以根据项目的类型和需求进行定制')
   .option('--vscode', '生成.vscode/setting.json配置')
   .action(async (cmd) => {

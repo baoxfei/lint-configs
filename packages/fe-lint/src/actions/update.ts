@@ -9,6 +9,7 @@ import log from '../utils/log';
 async function checkVersionUpdate() {
   const npm = await npmType;
   const latestVersion = execSync(`${npm} view ${PKG_NAME} version`).toString().trim();
+  console.log(latestVersion, PKG_VERSION, '--->');
   if (latestVersion === PKG_VERSION) return null;
 
   const compareArr = PKG_VERSION.split('.').map(Number);

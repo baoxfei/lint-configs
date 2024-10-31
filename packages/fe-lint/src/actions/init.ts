@@ -5,7 +5,8 @@
 // 4. 根据配置选项进行生成模版
 import path from 'path';
 import fs from 'fs-extra';
-import { select, confirm } from '@inquirer/prompts';
+import inquire from 'inquirer';
+// import { select, confirm } from '@inquirer/prompts';
 import spawn from 'cross-spawn';
 
 import update from './update';
@@ -22,7 +23,7 @@ let step = 0;
  * 选择eslint type
  */
 function chooseEslintType(): Promise<string> {
-  return select({
+  return inquire.select({
     message: `Step ${++step}. 请选择项目的语言（JS/TS）和框架（React/Vue）类型：`,
     choices: PROJECT_TYPES,
   });
@@ -32,7 +33,7 @@ function chooseEslintType(): Promise<string> {
  * 选择是否启用 stylelint
  */
 function chooseStylelint(): Promise<boolean> {
-  return confirm({
+  return inquire.confirm({
     message: `Step：${++step}, 是否需要配置stylelint （若没有样式文件，则不需要配置）`,
     default: true,
   });
@@ -42,7 +43,7 @@ function chooseStylelint(): Promise<boolean> {
  * 选择是否启用 markdownlint
  */
 function chooseEnableMarkdownLint(): Promise<boolean> {
-  return confirm({
+  return inquire.confirm({
     message: `Step：${++step}, 是否需要配置MarkdownLint （若没有md 文件，则不需要配置）`,
     default: true,
   });
@@ -52,7 +53,7 @@ function chooseEnableMarkdownLint(): Promise<boolean> {
  * 选择是否启用 prettier
  */
 function chooseEnablePrettier(): Promise<boolean> {
-  return confirm({
+  return inquire.confirm({
     message: `Step：${++step}, 是否需要使用 Prettier 格式化代码：`,
     default: true,
   });
