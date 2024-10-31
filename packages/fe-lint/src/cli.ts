@@ -114,3 +114,5 @@ program
   .action(() => {
     update(true);
   });
+
+program.parse(process.argv);

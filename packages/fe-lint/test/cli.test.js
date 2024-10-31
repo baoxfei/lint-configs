@@ -1,42 +1,54 @@
-const execa = require('execa');
-const pkg = require('../package.json');
-const fs = require('fs-extra');
 const path = require('path');
-// import execa from 'execa';
-// import pkg from '../package.json';
-// import fs from 'fs-extra';
-// import path, { dirname } from 'path';
-// import { fileURLToPath } from 'url';
-
-// // 获取当前模块的文件名
-// const __filename = fileURLToPath(import.meta.url);
-// // 获取当前模块的目录名
-// const __dirname = dirname(__filename);
+const fs = require('fs-extra');
+const execa = require('execa');
+const packageJson = require('../package.json');
 
 const cli = (args, options) => {
   return execa('node', [path.resolve(__dirname, '../lib/cli.js'), ...args], options);
 };
 
-test('--version should out right version', async () => {
-  const { stdout } = await cli('--version');
-  expect(stdout).toBe(pkg.version);
+test('--version should output right version', async () => {
+  const { stdout } = await cli(['--version']);
+  expect(stdout).toBe(packageJson.version);
+});
+
+describe(`'fix' command`, () => {
+  const dir = path.resolve(__dirname, './fixtures/autofix');
+  const outputFilePath = path.resolve(dir, './temp/temp.js');
+  const errorFileContent = fs.readFileSync(path.resolve(dir, './semi-error.js'), 'utf8');
+  const expectedFileContent = fs.readFileSync(path.resolve(dir, './semi-expected.js'), 'utf8');
+
+  beforeEach(() => {
+    fs.outputFileSync(outputFilePath, errorFileContent, 'utf8');
+  });
+
+  test('should autofix problematic code', async () => {
+    await cli(['fix'], {
+      cwd: path.dirname(`${dir}/result`),
+    });
+    expect(fs.readFileSync(outputFilePath, 'utf8')).toEqual(expectedFileContent);
+  });
+
+  afterEach(() => {
+    fs.removeSync(`${dir}/temp`);
+  });
 });
 
 describe(`'exec' command`, () => {
-  const semverRegex = /(\d+)\.(\d+).(\d+)/;
+  const semverRegex = /(\d+)\.(\d+)\.(\d+)/;
 
   test(`'exec eslint' should work as expected`, async () => {
-    const { stdout } = await cli(['exec', 'eslint', '-v']);
+    const { stdout } = await cli(['exec', 'eslint', '--version']);
     expect(stdout).toMatch(semverRegex);
   });
 
   test(`'exec stylelint' should work as expected`, async () => {
-    const { stdout } = await cli(['exec', 'stylelint', '-v']);
+    const { stdout } = await cli(['exec', 'stylelint', '--version']);
     expect(stdout).toMatch(semverRegex);
   });
 
-  test(`'exec markdownlint' should work as expected`, async () => {
-    const { stdout } = await cli(['exec', 'markdownlint', '-v']);
+  test(`'exec commitlint' should work as expected`, async () => {
+    const { stdout } = await cli(['exec', 'commitlint', '--version']);
     expect(stdout).toMatch(semverRegex);
   });
 });
