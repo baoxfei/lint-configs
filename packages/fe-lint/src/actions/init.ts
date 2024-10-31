@@ -5,8 +5,7 @@
 // 4. 根据配置选项进行生成模版
 import path from 'path';
 import fs from 'fs-extra';
-import inquire from 'inquirer';
-// import { select, confirm } from '@inquirer/prompts';
+import inquirer from 'inquirer';
 import spawn from 'cross-spawn';
 
 import update from './update';
@@ -22,41 +21,53 @@ let step = 0;
 /**
  * 选择eslint type
  */
-function chooseEslintType(): Promise<string> {
-  return inquire.select({
+async function chooseEslintType(): Promise<string> {
+  const { type } = await inquirer.prompt({
+    type: 'list',
+    name: 'type',
     message: `Step ${++step}. 请选择项目的语言（JS/TS）和框架（React/Vue）类型：`,
     choices: PROJECT_TYPES,
   });
+  return type;
 }
 
 /**
  * 选择是否启用 stylelint
  */
-function chooseStylelint(): Promise<boolean> {
-  return inquire.confirm({
+async function chooseStylelint(): Promise<boolean> {
+  const { enable } = await inquirer.prompt({
+    type: 'confirm',
+    name: 'enable',
     message: `Step：${++step}, 是否需要配置stylelint （若没有样式文件，则不需要配置）`,
     default: true,
   });
+  return enable;
 }
 
 /**
  * 选择是否启用 markdownlint
  */
-function chooseEnableMarkdownLint(): Promise<boolean> {
-  return inquire.confirm({
+async function chooseEnableMarkdownLint(): Promise<boolean> {
+  const { enable } = await inquirer.prompt({
+    type: 'confirm',
+    name: 'enable',
     message: `Step：${++step}, 是否需要配置MarkdownLint （若没有md 文件，则不需要配置）`,
     default: true,
   });
+  return enable;
 }
 
 /**
  * 选择是否启用 prettier
  */
-function chooseEnablePrettier(): Promise<boolean> {
-  return inquire.confirm({
+async function chooseEnablePrettier(): Promise<boolean> {
+  const { enable } = await inquirer.prompt({
+    type: 'confirm',
+    name: 'enable',
     message: `Step：${++step}, 是否需要使用 Prettier 格式化代码：`,
     default: true,
   });
+  return enable;
 }
 
 export default async function (options?: InitOptions) {
@@ -87,9 +98,9 @@ export default async function (options?: InitOptions) {
 
   // 初始化 `enableStylelint`
   if (typeof options.enableStylelint === 'boolean') {
-    config.enableESLint = options.enableESLint;
+    config.enableStylelint = options.enableStylelint;
   } else {
-    config.enableESLint = await chooseStylelint();
+    config.enableStylelint = await chooseStylelint();
   }
 
   // 初始化 `enableMarkdownlint`
@@ -121,7 +132,12 @@ export default async function (options?: InitOptions) {
   }
 
   // 插入git 卡点
-  pkgJson = fs.readJSONSync(cwd, 'package.json');
+  pkgJson = fs.readJSONSync(path.resolve(cwd, 'package.json'), { encoding: 'utf8' });
+
+  if (typeof pkgJson === 'string') {
+    log.info(pkgJson);
+    pkgJson = JSON.parse(pkgJson);
+  }
 
   // 在scripts 写入对应的脚本文件
   if (!pkgJson['scripts']) {
@@ -144,7 +160,7 @@ export default async function (options?: InitOptions) {
   pkgJson.husky.hooks['commit-msg'] = `${PKG_NAME} commit-msg-scan`;
   log.success(`Step ${++step}. 配置 git commit 卡点写入成功`);
 
-  fs.writeJSONSync(pkgPath, JSON.stringify(pkgJson, null, 2));
+  fs.writeJSONSync(pkgPath, pkgJson);
 
   log.info(`${++step} 写入配置文件`);
   generateTemplate(cwd, config);

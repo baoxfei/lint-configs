@@ -12,7 +12,7 @@
 import fs from 'fs-extra';
 import path from 'path';
 import glob from 'glob';
-import { confirm } from '@inquirer/prompts';
+import inquirer from 'inquirer';
 
 import { PKG } from '../types';
 import log from './log';
@@ -102,8 +102,11 @@ export default async function (cwd: string, rewriteConfig?: boolean) {
     }
 
     if (typeof rewriteConfig === 'undefined') {
-      const isOverWrite = await confirm({
+      const { isOverWrite } = await inquirer.prompt({
+        type: 'confirm',
+        name: 'isOverWrite',
         message: '请确认是否继续：',
+        defaultValue: false,
       });
       if (!isOverWrite) process.exit(0);
     } else if (!rewriteConfig) {

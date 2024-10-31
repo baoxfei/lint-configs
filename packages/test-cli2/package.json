@@ -21,17 +21,9 @@
     "url": "git+https://github.com/baoxfei/lint-configs.git"
   },
   "scripts": {
-    "test": "node ./__tests__/test-cli2.test.js",
-    "@baoxf/fe-lint-scan": "@baoxf/fe-lint scan",
-    "@baoxf/fe-lint-fix": "@baoxf/fe-lint fix"
+    "test": "node ./__tests__/test-cli2.test.js"
   },
   "bugs": {
     "url": "https://github.com/baoxfei/lint-configs/issues"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "@baoxf/fe-lint commit-file-scan",
-      "commit-msg": "@baoxf/fe-lint commit-msg-scan"
-    }
   }
 }
