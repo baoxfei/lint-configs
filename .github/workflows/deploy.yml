@@ -21,11 +21,11 @@ jobs:
       - name: Lock npm version
         uses: actions/setup-node@v3
         with:
-          node-version: 16.18.0
+          node-version: 18.14.0
 
       - name: Build
         run: |
-          npm i pnpm@8 -g 
+          npm i pnpm -g 
           pnpm run init
           pnpm run docs:build
 
