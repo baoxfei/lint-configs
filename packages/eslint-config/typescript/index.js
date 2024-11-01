@@ -1,3 +1,3 @@
 module.exports = {
-  extends: ['../index.js', '../typescript/index.js'].map(require.resolve),
+  extends: ['../index', '../rules/typescript'].map(require.resolve),
 };

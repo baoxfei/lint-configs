@@ -1,5 +1,5 @@
 module.exports = {
-  extends: ['@bxf1234/typescript/node'],
+  extends: ['@bxf1234/eslint-config/typescript/node'],
   overrides: [
     {
       files: ['test/**/*'],

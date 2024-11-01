@@ -7,21 +7,27 @@ import log from '../utils/log';
 
 // 使用 包管理工具获取当前包的version
 async function checkVersionUpdate() {
-  const npm = await npmType;
-  const latestVersion = execSync(`${npm} view ${PKG_NAME} version`).toString().trim();
-  console.log(latestVersion, PKG_VERSION, '--->');
-  if (latestVersion === PKG_VERSION) return null;
+  try {
+    const npm = await npmType;
+    log.info('latestVersion start');
+    const latestVersion = execSync(`${npm} view ${PKG_NAME} version`).toString().trim();
+    // const latestVersion = '1.0.0';
+    log.info('latestVersion end');
+    if (latestVersion === PKG_VERSION) return null;
 
-  const compareArr = PKG_VERSION.split('.').map(Number);
-  const beComparedArr = latestVersion.split('.').map(Number);
+    const compareArr = PKG_VERSION.split('.').map(Number);
+    const beComparedArr = latestVersion.split('.').map(Number);
 
-  // 依次比较版本号每一位大小
-  for (let i = 0; i < compareArr.length; i++) {
-    if (compareArr[i] > beComparedArr[i]) {
-      return null;
-    } else if (compareArr[i] < beComparedArr[i]) {
-      return latestVersion;
+    // 依次比较版本号每一位大小
+    for (let i = 0; i < compareArr.length; i++) {
+      if (compareArr[i] > beComparedArr[i]) {
+        return null;
+      } else if (compareArr[i] < beComparedArr[i]) {
+        return latestVersion;
+      }
     }
+  } catch (error) {
+    console.log(error.toString(), 'checkVersionUpdate');
   }
 }
 

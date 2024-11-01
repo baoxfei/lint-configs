@@ -54,6 +54,6 @@ export default function (cwd: string, config: Record<string, boolean>, vscode?: 
 
     if (!content.trim()) continue;
     // 原生的fs模块 writeFileSync 如果文件不存在会报错
-    fs.outputFileSync(content, filepath, 'utf8');
+    fs.outputFileSync(filepath, content, { encoding: 'utf-8' });
   }
 }

@@ -79,7 +79,11 @@ export default async function (options?: InitOptions) {
   let pkgJson = fs.readJsonSync(pkgPath);
 
   if (!isTest) {
-    update(false);
+    try {
+      await update(false);
+    } catch (error) {
+      log.error(error.toString());
+    }
   }
 
   const config: Record<string, any> = {};
@@ -121,12 +125,12 @@ export default async function (options?: InitOptions) {
   // 判断是否安装
   if (!isTest) {
     log.info(`Step ${++step}. 检查并处理项目中可能存在的依赖和配置冲突`);
-    pkgJson = conflictResolve(cwd, options.rewriteConfig);
+    pkgJson = await conflictResolve(cwd, options.rewriteConfig);
     log.success(`Step ${++step}. 冲突解决完毕`);
     if (!disableNpmInstall) {
       log.info(`Step ${++step}, 安装依赖`);
       const npm = await npmType;
-      spawn.sync(npm, ['-i', '-D', PKG_NAME], { stdio: 'inherit', cwd });
+      spawn.sync(npm, ['i', '-D', PKG_NAME], { stdio: 'inherit', cwd });
       log.info(`Step ${++step}, 依赖安装完成`);
     }
   }

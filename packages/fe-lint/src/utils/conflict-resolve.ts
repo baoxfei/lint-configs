@@ -11,7 +11,7 @@
 
 import fs from 'fs-extra';
 import path from 'path';
-import glob from 'glob';
+import glob from 'fast-glob';
 import inquirer from 'inquirer';
 
 import { PKG } from '../types';

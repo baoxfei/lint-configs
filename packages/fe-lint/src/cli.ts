@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // 设置环境变量
-process.env.NODE_ENV = 'test';
+// process.env.NODE_ENV = 'test';
 
 import { execSync } from 'child_process';
 import { program } from 'commander';
@@ -42,7 +42,6 @@ program
   .option('--vscode', '生成.vscode/setting.json配置')
   .action(async (cmd) => {
     const configPath = path.resolve(cwd, `${PKG_NAME}.config.js`);
-    console.log(fs.existsSync(configPath));
 
     if (!fs.existsSync(configPath)) {
       return init({
